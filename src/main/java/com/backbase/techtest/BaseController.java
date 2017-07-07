@@ -1,7 +1,5 @@
 package com.backbase.techtest;
 
-import java.util.Date;
-
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
