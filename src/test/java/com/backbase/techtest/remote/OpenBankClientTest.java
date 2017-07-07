@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.backbase.techtest.remote.model.Transaction;
+import com.backbase.techtest.remote.model.OpenBankTransaction;
 
 public class OpenBankClientTest {
 
@@ -15,7 +15,7 @@ public class OpenBankClientTest {
 	public void testClientWorks() {
 		OpenBankClient client = new OpenBankClient();
 		try {
-			List<Transaction> transactions = client.getTransactions("rbs", "savings-kids-john");
+			List<OpenBankTransaction> transactions = client.getTransactions("rbs", "savings-kids-john");
 			assertFalse("Transaction list is null", transactions.isEmpty());
 		} catch (Exception e) {
 			fail(e.getMessage());

@@ -4,13 +4,13 @@ import java.util.List;
 
 public class TransactionListResponse {
 
-	private List<Transaction> transactions;
+	private List<OpenBankTransaction> transactions;
 
-	public List<Transaction> getTransactions() {
+	public List<OpenBankTransaction> getTransactions() {
 		return transactions;
 	}
 
-	public void setTransactions(List<Transaction> transactions) {
+	public void setTransactions(List<OpenBankTransaction> transactions) {
 		this.transactions = transactions;
 	}
 }

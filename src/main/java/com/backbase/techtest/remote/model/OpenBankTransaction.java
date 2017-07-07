@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Transaction {
+public class OpenBankTransaction {
 
 	private UUID id;
     private Detail details;
