@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +26,17 @@ public class BaseController {
 	private static final String BANK_ID = "rbs";
 	private static final String ACCOUNT_ID = "savings-kids-john";
 	
+	@Autowired
+	private OpenBankClient client;
+	
+	public void setOpenBankClient(OpenBankClient client) {
+		this.client = client;
+	}
+	
 	@RequestMapping(value = "/transactions", method = RequestMethod.GET)
 	public @ResponseBody List<Transaction> getTransactions() {
 		LOG.debug("Start getTransactions");
-		OpenBankClient client = new OpenBankClient();
+		//OpenBankClient client = new OpenBankClient();
 		try {
 			List<OpenBankTransaction> openBankTransactions = client.getTransactions(BANK_ID, ACCOUNT_ID);
 			LOG.debug("Got {} transactions", openBankTransactions.size());
@@ -44,7 +52,7 @@ public class BaseController {
 	@RequestMapping(value = "/transactions/{type}", method = RequestMethod.GET)
 	public @ResponseBody List<Transaction> getTransactionsByType(@PathVariable("type") String transactionType) {
 		LOG.debug("Start getTransactionsByType");
-		OpenBankClient client = new OpenBankClient();
+		//OpenBankClient client = new OpenBankClient();
 		try {
 			List<OpenBankTransaction> openBankTransactions = client.getTransactions(BANK_ID, ACCOUNT_ID);
 			LOG.debug("Got {} transactions", openBankTransactions.size());
@@ -61,7 +69,7 @@ public class BaseController {
 	@RequestMapping(value = "/transactions/{type}/amount", method = RequestMethod.GET)
 	public @ResponseBody TotalAmount getTotalAmountForTransactionType(@PathVariable("type") String transactionType) {
 		LOG.debug("Start getTotalAmountForTransactionType");
-		OpenBankClient client = new OpenBankClient();
+		//OpenBankClient client = new OpenBankClient();
 		try {
 			List<OpenBankTransaction> openBankTransactions = client.getTransactions(BANK_ID, ACCOUNT_ID);
 			LOG.debug("Got {} transactions", openBankTransactions.size());
