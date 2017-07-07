@@ -17,18 +17,20 @@ import com.backbase.techtest.dto.Transaction;
 import com.backbase.techtest.remote.OpenBankClient;
 import com.backbase.techtest.remote.model.OpenBankTransaction;
 
-
 @Controller
 public class BaseController {
 
 	private final static Logger LOG = LoggerFactory.getLogger(BaseController.class);
+	
+	private static final String BANK_ID = "rbs";
+	private static final String ACCOUNT_ID = "savings-kids-john";
 	
 	@RequestMapping(value = "/transactions", method = RequestMethod.GET)
 	public @ResponseBody List<Transaction> getTransactions() {
 		LOG.debug("Start getTransactions");
 		OpenBankClient client = new OpenBankClient();
 		try {
-			List<OpenBankTransaction> openBankTransactions = client.getTransactions("rbs", "savings-kids-john");
+			List<OpenBankTransaction> openBankTransactions = client.getTransactions(BANK_ID, ACCOUNT_ID);
 			LOG.debug("Got {} transactions", openBankTransactions.size());
 			return openBankTransactions.stream()
 					.map(TransactionConverter::fromOpenBankTransaction)
@@ -44,7 +46,7 @@ public class BaseController {
 		LOG.debug("Start getTransactionsByType");
 		OpenBankClient client = new OpenBankClient();
 		try {
-			List<OpenBankTransaction> openBankTransactions = client.getTransactions("rbs", "savings-kids-john");
+			List<OpenBankTransaction> openBankTransactions = client.getTransactions(BANK_ID, ACCOUNT_ID);
 			LOG.debug("Got {} transactions", openBankTransactions.size());
 			return openBankTransactions.stream()
 					.filter(t -> null != t.getDetails() && transactionType.equals(t.getDetails().getType()))
@@ -61,7 +63,7 @@ public class BaseController {
 		LOG.debug("Start getTotalAmountForTransactionType");
 		OpenBankClient client = new OpenBankClient();
 		try {
-			List<OpenBankTransaction> openBankTransactions = client.getTransactions("rbs", "savings-kids-john");
+			List<OpenBankTransaction> openBankTransactions = client.getTransactions(BANK_ID, ACCOUNT_ID);
 			LOG.debug("Got {} transactions", openBankTransactions.size());
 			double total = openBankTransactions.stream()
 					.filter(t -> null != t.getDetails() && transactionType.equals(t.getDetails().getType()))
