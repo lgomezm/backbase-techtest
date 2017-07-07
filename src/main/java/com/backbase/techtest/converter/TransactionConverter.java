@@ -24,7 +24,7 @@ public class TransactionConverter {
 		toReturn.setCounterpartyAccount(optOtherAccount.map(Account::getNumber).orElse(null));
 		toReturn.setCounterpartyName(optOtherAccount.map(Account::getHolder).map(Holder::getName).orElse(null));
 		toReturn.setCounterPartyLogoPath(optOtherAccount.map(Account::getMetadata).map(AccountMetadata::getImageURL).orElse(null));
-		toReturn.setInstructedAmount(optDetails.map(Detail::getValue).map(Balance::getAmount).orElse(null));
+		toReturn.setInstructedAmount(optDetails.map(Detail::getValue).map(Balance::getAmount).orElse(0.0));
 		toReturn.setInstructedCurrency(optDetails.map(Detail::getValue).map(Balance::getCurrency).orElse(null));
 		toReturn.setTransactionAmount(toReturn.getInstructedAmount());
 		toReturn.setTransactionCurrency(toReturn.getInstructedCurrency());

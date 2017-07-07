@@ -7,9 +7,9 @@ public class Transaction {
 	private String counterpartyAccount;
 	private String counterpartyName;
 	private String counterPartyLogoPath;
-	private String instructedAmount;
+	private double instructedAmount;
 	private String instructedCurrency;
-	private String transactionAmount;
+	private double transactionAmount;
 	private String transactionCurrency;
 	private String transactionType;
 	private String description;
@@ -44,10 +44,10 @@ public class Transaction {
 	public void setCounterPartyLogoPath(String counterPartyLogoPath) {
 		this.counterPartyLogoPath = counterPartyLogoPath;
 	}
-	public String getInstructedAmount() {
+	public double getInstructedAmount() {
 		return instructedAmount;
 	}
-	public void setInstructedAmount(String instructedAmount) {
+	public void setInstructedAmount(double instructedAmount) {
 		this.instructedAmount = instructedAmount;
 	}
 	public String getInstructedCurrency() {
@@ -56,10 +56,10 @@ public class Transaction {
 	public void setInstructedCurrency(String instructedCurrency) {
 		this.instructedCurrency = instructedCurrency;
 	}
-	public String getTransactionAmount() {
+	public double getTransactionAmount() {
 		return transactionAmount;
 	}
-	public void setTransactionAmount(String transactionAmount) {
+	public void setTransactionAmount(double transactionAmount) {
 		this.transactionAmount = transactionAmount;
 	}
 	public String getTransactionCurrency() {
