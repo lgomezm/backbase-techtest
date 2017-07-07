@@ -36,7 +36,6 @@ public class BaseController {
 	@RequestMapping(value = "/transactions", method = RequestMethod.GET)
 	public @ResponseBody List<Transaction> getTransactions() {
 		LOG.debug("Start getTransactions");
-		//OpenBankClient client = new OpenBankClient();
 		try {
 			List<OpenBankTransaction> openBankTransactions = client.getTransactions(BANK_ID, ACCOUNT_ID);
 			LOG.debug("Got {} transactions", openBankTransactions.size());
@@ -52,7 +51,6 @@ public class BaseController {
 	@RequestMapping(value = "/transactions/{type}", method = RequestMethod.GET)
 	public @ResponseBody List<Transaction> getTransactionsByType(@PathVariable("type") String transactionType) {
 		LOG.debug("Start getTransactionsByType");
-		//OpenBankClient client = new OpenBankClient();
 		try {
 			List<OpenBankTransaction> openBankTransactions = client.getTransactions(BANK_ID, ACCOUNT_ID);
 			LOG.debug("Got {} transactions", openBankTransactions.size());
@@ -69,7 +67,6 @@ public class BaseController {
 	@RequestMapping(value = "/transactions/{type}/amount", method = RequestMethod.GET)
 	public @ResponseBody TotalAmount getTotalAmountForTransactionType(@PathVariable("type") String transactionType) {
 		LOG.debug("Start getTotalAmountForTransactionType");
-		//OpenBankClient client = new OpenBankClient();
 		try {
 			List<OpenBankTransaction> openBankTransactions = client.getTransactions(BANK_ID, ACCOUNT_ID);
 			LOG.debug("Got {} transactions", openBankTransactions.size());
